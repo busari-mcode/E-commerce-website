@@ -120,3 +120,18 @@
 {
     color: #0989ff;
 }
+.header .container .auth
+{
+    margin-right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.header .container .auth button
+{
+    margin-right: 20px;
+    font-size: 22px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+}
