@@ -82,9 +82,10 @@
 {
     display: flex;
 }
-.main_header .container .icon .second_icon p
+.main_header .container .icon .second_icon .link
 {
     margin-right: 5px;
     font-size: 22px;
     cursor: pointer;
+    color: #0989ff;
 }
