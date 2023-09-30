@@ -2,12 +2,14 @@ import React from 'react'
 import { FaTruckMoving } from 'react-icons/fa';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BsBagCheck } from 'react-icons/bs';
+import { useAuth0 } from "@auth0/auth0-react";
 import { AiOutlineUser } from 'react-icons/ai';
 import { CiLogin } from 'react-icons/ci';
 import { CiLogout } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import './nav.css';
 const Nav = () => {
+  const { loginWithRedirect, logout } = useAuth0();
   return (
     <>
     <div className='free'>
@@ -58,8 +60,8 @@ const Nav = () => {
         </ul>
         </div>
         <div className='auth'>
-          <CiLogin />
-          <CiLogout />
+          <button onClick={() => loginWithRedirect()}><CiLogin /></button>
+          <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}><CiLogout /></button>
         </div>
       </div>
     </div>
