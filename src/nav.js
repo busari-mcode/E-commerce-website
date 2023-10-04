@@ -9,7 +9,7 @@ import { CiLogout } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import './nav.css';
 const Nav = () => {
-  const { loginWithRedirect, logout } = useAuth0();
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   return (
     <>
     <div className='free'>
@@ -28,12 +28,17 @@ const Nav = () => {
           <button>Search</button>
         </div>
         <div className='icon'>
-          <div className='account'>
-            <div className='user_icon'>
-            <AiOutlineUser />
-            </div>
-            <p>Hello, user</p>
+          {
+            isAuthenticated &&
+            (
+            <div className='account'>
+              <div className='user_icon'>
+              <AiOutlineUser />
+              </div>
+              <p>Hello, {user.name}</p>
           </div>
+            )
+          }
           <div className='second_icon'>
           <Link to="/" className='link'><AiOutlineHeart /></Link>
           <Link to="/cart" className='link'><BsBagCheck /></Link>
@@ -60,8 +65,12 @@ const Nav = () => {
         </ul>
         </div>
         <div className='auth'>
-          <button onClick={() => loginWithRedirect()}><CiLogin /></button>
-          <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}><CiLogout /></button>
+          {
+            isAuthenticated?
+            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}><CiLogout /></button>
+            :
+            <button onClick={() => loginWithRedirect()}><CiLogin /></button>
+          }
         </div>
       </div>
     </div>
