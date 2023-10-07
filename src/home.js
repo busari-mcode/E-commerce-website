@@ -4,9 +4,12 @@ import { BsArrowRight, BsCurrencyDollar } from 'react-icons/bs';
 import { FiTruck } from 'react-icons/fi';
 import { BiHeadphone } from 'react-icons/bi';
 import { CiPercent } from 'react-icons/ci';
+import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
+import { BsEye } from 'react-icons/bs';
+import Homeproduct from './homeproduct';
 import './home.css'
 const Home = () => {
-  return (
+  return(
     <>
     <div className='top_banner'>
       <div className='container'>
@@ -100,6 +103,32 @@ const Home = () => {
             <p>Every Time Call Support</p>
           </div>
         </div>
+      </div>
+    </div>
+    <div className='product'>
+      <div className='container'>
+        {
+          Homeproduct.map((curElm)=>
+          {
+            return(
+               <div className='box' key={curElm.id}>
+                 <div className='img_box'>
+                  <img src={curElm.Img} alt={curElm.Title}></img>
+                  <div className='icon'>
+                    <AiOutlineShoppingCart />
+                    <BsEye />
+                    <AiOutlineHeart />
+                  </div>
+                 </div>
+                 <div className='detail'>
+                  <p>{curElm.Cat}</p>
+                  <h3>{curElm.Title}</h3>
+                  <h4>{curElm.Price}</h4>
+                 </div>
+               </div>
+            )
+          })
+        }
       </div>
     </div>
     </>
