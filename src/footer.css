@@ -63,3 +63,42 @@
     margin-top: 10px;
     margin-left: 20px;
 }
+.footer .container .account ul li 
+{
+    margin-top: 5px;
+    color: #010f1c;
+    font-size: 14px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.footer .container .account ul li:hover 
+{
+    color: #0989ff;
+}
+.footer .container .page 
+{
+    margin-right: 100px;
+    margin-top: 30px;
+}
+.footer .container .page h3
+{
+    font-size: 32px;
+    color: #010f1c;
+}
+.footer .container .page ul 
+{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.footer .container .page ul li 
+{
+    margin-top: 5px;
+    color: #010f1c;
+    font-size: 14px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.footer .container .page ul li:hover 
+{
+    color: #0989ff;
+}
