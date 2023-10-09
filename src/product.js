@@ -3,7 +3,19 @@ import Productdetail from './productdetail';
 import { BsEye } from 'react-icons/bs';
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import './product.css';
-const Product = () => {
+const Product = ({product, setProduct}) => {
+  const filterproduct = (product) =>
+  {
+    const update = Productdetail.filter((x) =>
+    {
+      return x.Cat === product;
+    })
+    setProduct(update);
+  }
+  const AllProducts = () =>
+  {
+    setProduct(Productdetail)
+  }
   return (
     <>
     <div className='products'>
@@ -14,18 +26,19 @@ const Product = () => {
           <div className='categories'>
             <h3>categories</h3>
             <ul>
-              <li>Tablet</li>
-              <li>Smart Watch</li>
-              <li>Headphone</li>
-              <li>Camera</li>
-              <li>Gaming</li>
+              <li onClick={()=>AllProducts()}>All Products</li>
+              <li onClick={()=>filterproduct("Tablet")}>Tablet</li>
+              <li onClick={()=>filterproduct("Smart Watch")}>Smart Watch</li>
+              <li onClick={()=>filterproduct("Headphone")}>Headphone</li>
+              <li onClick={()=>filterproduct("Camera")}>Camera</li>
+              <li onClick={()=>filterproduct("Gaming")}>Gaming</li>
             </ul>
           </div>
         </div>
         <div className='productbox'>
           <div className='contant'>
             {
-              Productdetail.map((curElm) =>
+              product.map((curElm) =>
               {
                 return(
                   <>
