@@ -6,6 +6,9 @@ import { BrowserRouter } from 'react-router-dom'
 import Footer from './footer';
 import Productdetail from './productdetail';
 const App = () => {
+  //product Detail
+  const [detail, setDetail] = useState([]);
+  //fiter product
   const [product, setProduct] = useState(Productdetail);
   const searchbtn = (product) =>
   {
@@ -19,7 +22,7 @@ const App = () => {
     <>
     <BrowserRouter>
     <Nav searchbtn={searchbtn}/>
-    <Rout product={product} setProduct={setProduct}/>
+    <Rout product={product} setProduct={setProduct} detail={detail}/>
     <Footer />
     </BrowserRouter>
     </>

@@ -3,7 +3,7 @@ import Productdetail from './productdetail';
 import { BsEye } from 'react-icons/bs';
 import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import './product.css';
-const Product = ({product, setProduct}) => {
+const Product = ({product, setProduct, detail}) => {
   const filterproduct = (product) =>
   {
     const update = Productdetail.filter((x) =>
@@ -18,6 +18,26 @@ const Product = ({product, setProduct}) => {
   }
   return (
     <>
+    <div className='product_detail'>
+      <div className='container'>
+        {
+          detail.map((curElm)=>
+          {
+            return(
+              <div className='productbox'>
+                <div className='img-box'>
+                  <img src={curElm.Img} alt={curElm.Title}></img>
+                </div>
+                <div className='detail'>
+                  <h4>{curElm.Cat}</h4>
+                  <h2>{curElm.Title}</h2>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </div>
     <div className='products'>
       <h2># Products</h2>
       <p>Home . products</p>
