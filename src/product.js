@@ -1,9 +1,9 @@
 import React from 'react'
 import Productdetail from './productdetail';
 import { BsEye } from 'react-icons/bs';
-import { AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineCloseCircle, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import './product.css';
-const Product = ({product, setProduct, detail}) => {
+const Product = ({product, setProduct, detail, view, close, setClose}) => {
   const filterproduct = (product) =>
   {
     const update = Productdetail.filter((x) =>
@@ -20,6 +20,7 @@ const Product = ({product, setProduct, detail}) => {
     <>
     <div className='product_detail'>
       <div className='container'>
+        <button onClick={() => setClose(false)}><AiOutlineCloseCircle /></button>
         {
           detail.map((curElm)=>
           {
@@ -31,6 +32,9 @@ const Product = ({product, setProduct, detail}) => {
                 <div className='detail'>
                   <h4>{curElm.Cat}</h4>
                   <h2>{curElm.Title}</h2>
+                  <p>A Screen Everyone Will Love: Whether your family is streaming or video chatting with friends tablet A8...</p>
+                  <h3>{curElm.Price}</h3>
+                  <button>Add To Cart</button>
                 </div>
               </div>
             )
@@ -67,7 +71,7 @@ const Product = ({product, setProduct, detail}) => {
                        <img src={curElm.Img} alt={curElm.Title}></img>
                        <div className='icon'>
                          <li><AiOutlineShoppingCart /></li>
-                         <li><BsEye /></li>
+                         <li onClick={()=> view(curElm)}><BsEye /></li>
                          <li><AiOutlineHeart /></li>
                        </div>
                       </div>
