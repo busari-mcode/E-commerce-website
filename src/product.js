@@ -18,9 +18,11 @@ const Product = ({product, setProduct, detail, view, close, setClose}) => {
   }
   return (
     <>
-    <div className='product_detail'>
+    {
+      close ?
+      <div className='product_detail'>
       <div className='container'>
-        <button onClick={() => setClose(false)}><AiOutlineCloseCircle /></button>
+        <button onClick={() => setClose(false)} className='closebtn'><AiOutlineCloseCircle /></button>
         {
           detail.map((curElm)=>
           {
@@ -41,7 +43,8 @@ const Product = ({product, setProduct, detail, view, close, setClose}) => {
           })
         }
       </div>
-    </div>
+    </div> : null
+    }
     <div className='products'>
       <h2># Products</h2>
       <p>Home . products</p>
