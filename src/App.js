@@ -6,6 +6,8 @@ import { BrowserRouter } from 'react-router-dom'
 import Footer from './footer';
 import Productdetail from './productdetail';
 const App = () => {
+  // add to cart
+  const [cart, setCart] = useState([])
   //product Detail
   const [close, setClose] = useState(false)
   const [detail, setDetail] = useState([]);
@@ -25,11 +27,18 @@ const App = () => {
     setDetail([{...product}])
     setClose(true)
   }
+
+  // add to cart
+
+  const addtocart = (product) =>
+  {
+
+  }
   return (
     <>
     <BrowserRouter>
     <Nav searchbtn={searchbtn}/>
-    <Rout product={product} setProduct={setProduct} detail={detail} view={view} close={close} setClose={setClose}/>
+    <Rout product={product} setProduct={setProduct} detail={detail} view={view} close={close} setClose={setClose} cart={cart} setCart={setCart} addtocart={addtocart}/>
     <Footer />
     </BrowserRouter>
     </>

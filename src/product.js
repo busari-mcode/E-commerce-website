@@ -3,7 +3,7 @@ import Productdetail from './productdetail';
 import { BsEye } from 'react-icons/bs';
 import { AiOutlineCloseCircle, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
 import './product.css';
-const Product = ({product, setProduct, detail, view, close, setClose}) => {
+const Product = ({product, setProduct, detail, view, close, setClose, addtocart}) => {
   const filterproduct = (product) =>
   {
     const update = Productdetail.filter((x) =>
@@ -73,7 +73,7 @@ const Product = ({product, setProduct, detail, view, close, setClose}) => {
                       <div className='img_box'>
                        <img src={curElm.Img} alt={curElm.Title}></img>
                        <div className='icon'>
-                         <li><AiOutlineShoppingCart /></li>
+                         <li onClick={()=> addtocart(curElm)}><AiOutlineShoppingCart /></li>
                          <li onClick={()=> view(curElm)}><BsEye /></li>
                          <li><AiOutlineHeart /></li>
                        </div>
