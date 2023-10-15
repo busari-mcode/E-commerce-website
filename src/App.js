@@ -29,11 +29,23 @@ const App = () => {
   }
 
   // add to cart
-
   const addtocart = (product) =>
   {
-
+    const exsit = cart.find((x)=>
+    {
+      return x.id === product.id
+    })
+    if(exsit) 
+    {
+      alert("This Product is already added to cart")
+    }
+    else
+    {
+      setCart([...cart, {...product, qty:1}])
+      alert("Product is added to cart")
+    }
   }
+  console.log(cart)
   return (
     <>
     <BrowserRouter>

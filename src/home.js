@@ -8,7 +8,7 @@ import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineCloseCircle } from 'rea
 import { BsEye } from 'react-icons/bs';
 import Homeproduct from './homeproduct';
 import './home.css'
-const Home = ({detail, view, close, setClose}) => {
+const Home = ({detail, view, close, setClose, addtocart}) => {
   return(
     <>
     {
@@ -143,7 +143,7 @@ const Home = ({detail, view, close, setClose}) => {
                  <div className='img_box'>
                   <img src={curElm.Img} alt={curElm.Title}></img>
                   <div className='icon'>
-                    <li><AiOutlineShoppingCart /></li>
+                    <li onClick={()=> addtocart(curElm)}><AiOutlineShoppingCart /></li>
                     <li onClick={()=> view(curElm)}><BsEye /></li>
                     <li><AiOutlineHeart /></li>
                   </div>
