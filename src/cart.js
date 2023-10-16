@@ -3,6 +3,45 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import './cart.css'
 const Cart = ({cart, setCart}) => {
+    //increase qty
+    const incqty = (product) =>
+    {
+        const exsit = cart.find((x) =>
+        {
+            return x.id === product.id
+        })
+        setCart(cart.map((curElm) =>
+        {
+            return curElm.id === product.id ? {...exsit, qty: exsit.qty + 1} : curElm   
+        }))
+    }
+    // decrease qty
+    const decqty = (product) =>
+    {
+        const exsit = cart.find((x) =>
+        {
+            return x.id === product.id
+        })
+        setCart(cart.map((curElm) =>
+        {
+            return curElm.id === product.id ? {...exsit, qty: exsit.qty - 1} : curElm   
+        }))
+    }
+    // Remove cart product
+    const removeproduct = (product) =>
+    {
+        const exsit = cart.find((x) =>
+        {
+            return x.id === product.id
+        })
+        if(exsit.qty > 0)
+        {
+            setCart(cart.filter((x) =>
+            {
+                return x.id !== product.id
+            }))
+        }
+    }
   return (
     <>
     <div className='cartcontainer'>
@@ -26,10 +65,12 @@ const Cart = ({cart, setCart}) => {
                                 <h3>{curElm.Title}</h3>
                                 <p>Price: ${curElm.Price}</p>
                                 <div className='qty'>
-                                    <button className='incqty'>+</button>
-                                    <h4>sub total: ${curElm.Price * curElm.qty}</h4>
+                                    <button className='incqty' onClick={() => incqty(curElm)}>+</button>
+                                    <input type='text' value={curElm.qty}></input>
+                                    <button className='decqty' onClick={() => decqty(curElm)}>-</button>
                                 </div>
-                                <button><AiOutlineClose /></button>
+                                <h4>sub total: ${curElm.Price * curElm.qty}</h4>
+                                <button onClick={() => removeproduct(curElm)}><AiOutlineClose /></button>
                             </div>
                         </div>
                     )

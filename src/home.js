@@ -151,7 +151,7 @@ const Home = ({detail, view, close, setClose, addtocart}) => {
                  <div className='detail'>
                   <p>{curElm.Cat}</p>
                   <h3>{curElm.Title}</h3>
-                  <h4>{curElm.Price}</h4>
+                  <h4>${curElm.Price}</h4>
                  </div>
                </div>
             )
