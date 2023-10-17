@@ -42,6 +42,8 @@ const Cart = ({cart, setCart}) => {
             }))
         }
     }
+    // Total price
+    const Totalprice = cart.reduce((price, item) => price + item.qty * item.Price, 0)
   return (
     <>
     <div className='cartcontainer'>
@@ -61,6 +63,7 @@ const Cart = ({cart, setCart}) => {
                                 <img src={curElm.Img} alt={curElm.Title}></img>
                             </div>
                             <div className='detail'>
+                                <div className='info'>
                                 <h4>{curElm.Cat}</h4>
                                 <h3>{curElm.Title}</h3>
                                 <p>Price: ${curElm.Price}</p>
@@ -69,14 +72,24 @@ const Cart = ({cart, setCart}) => {
                                     <input type='text' value={curElm.qty}></input>
                                     <button className='decqty' onClick={() => decqty(curElm)}>-</button>
                                 </div>
-                                <h4>sub total: ${curElm.Price * curElm.qty}</h4>
+                                <h4 className='subtotal'>sub total: ${curElm.Price * curElm.qty}</h4>
+                                </div>
+                                <div className='close'>
                                 <button onClick={() => removeproduct(curElm)}><AiOutlineClose /></button>
+                                </div>
                             </div>
                         </div>
                     )
                 })
             }
         </div>
+        {
+            cart.length > 0 &&
+            <>
+            <h2 className='totalprice'> $ {Totalprice} </h2>
+            <button className='checkout'>Checkout</button>
+            </>
+        }
     </div>
     </>
   )
