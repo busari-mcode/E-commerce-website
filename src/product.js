@@ -1,9 +1,12 @@
 import React from 'react'
 import Productdetail from './productdetail';
 import { BsEye } from 'react-icons/bs';
-import { AiOutlineCloseCircle, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineCloseCircle, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
+import { useAuth0 } from "@auth0/auth0-react";
 import './product.css';
 const Product = ({product, setProduct, detail, view, close, setClose, addtocart}) => {
+
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const filterproduct = (product) =>
   {
     const update = Productdetail.filter((x) =>
@@ -73,7 +76,12 @@ const Product = ({product, setProduct, detail, view, close, setClose, addtocart}
                       <div className='img_box'>
                        <img src={curElm.Img} alt={curElm.Title}></img>
                        <div className='icon'>
-                         <li onClick={()=> addtocart(curElm)}><AiOutlineShoppingCart /></li>
+                        {
+                          isAuthenticated ?
+                          <li onClick={()=> addtocart(curElm)}><AiOutlineShoppingCart /></li>
+                          :
+                          <li onClick={()=> loginWithRedirect()}><AiOutlineShoppingCart /></li> 
+                        }
                          <li onClick={()=> view(curElm)}><BsEye /></li>
                          <li><AiOutlineHeart /></li>
                        </div>

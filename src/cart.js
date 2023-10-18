@@ -86,7 +86,7 @@ const Cart = ({cart, setCart}) => {
         {
             cart.length > 0 &&
             <>
-            <h2 className='totalprice'> $ {Totalprice} </h2>
+            <h2 className='totalprice'>total: $ {Totalprice} </h2>
             <button className='checkout'>Checkout</button>
             </>
         }
